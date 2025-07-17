@@ -1,5 +1,9 @@
 package com.kevin.curso.springboot.jpa.springboot_jpa_relationship.repositories;
 
-public class ClientRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.kevin.curso.springboot.jpa.springboot_jpa_relationship.entities.Client;
+
+public interface ClientRepository extends CrudRepository<Client, Long> {
 
 }
