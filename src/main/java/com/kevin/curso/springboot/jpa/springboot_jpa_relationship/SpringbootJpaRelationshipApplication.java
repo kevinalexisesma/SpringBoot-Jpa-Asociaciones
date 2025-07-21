@@ -1,6 +1,7 @@
 package com.kevin.curso.springboot.jpa.springboot_jpa_relationship;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,23 @@ public class SpringbootJpaRelationshipApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		OneToMany();
+		OneToManyFindById();
+	}
+
+	@Transactional
+	public void OneToManyFindById() {
+		Optional<Client> optionalClient = clientRepository.findById(2L);
+
+		optionalClient.ifPresent(client -> {
+			Address address1 = new Address("El Verjel", 1234);
+			Address address2 = new Address("Vasco de Gama", 9875);
+
+			client.setAddresses(Arrays.asList(address1, address2));
+
+			clientRepository.save(client);
+
+			System.out.println(client);
+		});
 	}
 
 	@Transactional
