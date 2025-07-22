@@ -1,6 +1,5 @@
 package com.kevin.curso.springboot.jpa.springboot_jpa_relationship;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -41,10 +40,7 @@ public class SpringbootJpaRelationshipApplication implements CommandLineRunner {
 		Invoice invoice = new Invoice("Compras de de la casa", 5000L);
 		Invoice invoice2 = new Invoice("Compras de oficina", 8000L);
 
-		client.setInvoices(Arrays.asList(invoice, invoice2));
-
-		invoice.setClient(client);
-		invoice2.setClient(client);
+		client.addInvoice(invoice).addInvoice(invoice2);
 
 		clientRepository.save(client);
 
